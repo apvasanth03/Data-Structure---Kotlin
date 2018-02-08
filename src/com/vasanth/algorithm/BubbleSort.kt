@@ -4,7 +4,7 @@ package com.vasanth.algorithm
 
 class BubbleSort {
 
-    fun sort(arr: Array<Int>): Array<Int> {
+    fun sort(arr: Array<Int>) {
         val n = arr.size
 
         var i = 0
@@ -20,7 +20,6 @@ class BubbleSort {
             }
             i++
         }
-        return arr
     }
 }
 
@@ -35,7 +34,7 @@ fun main(args: Array<String>) {
     val sortedArr = bubbleSort.sort(arr)
 
     println("Sorted Array : ")
-    for (item in sortedArr) {
+    for (item in arr) {
         print("${item} ")
     }
 }

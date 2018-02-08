@@ -4,7 +4,7 @@ package com.vasanth.algorithm
 
 class SelectionSort {
 
-    fun sort(arr: Array<Int>): Array<Int> {
+    fun sort(arr: Array<Int>) {
         val n = arr.size
 
         var i = 0
@@ -24,7 +24,6 @@ class SelectionSort {
             arr[i] = temp
             i++
         }
-        return arr
     }
 }
 
@@ -36,10 +35,10 @@ fun main(args: Array<String>) {
 
     val selectionSort = SelectionSort()
 
-    val sortedArr = selectionSort.sort(arr)
+    selectionSort.sort(arr)
 
     println("Sorted Array : ")
-    for (item in sortedArr) {
+    for (item in arr) {
         print("${item} ")
     }
 }
