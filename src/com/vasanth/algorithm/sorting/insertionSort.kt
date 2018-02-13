@@ -1,4 +1,4 @@
-package com.vasanth.algorithm
+package com.vasanth.algorithm.sorting
 
 // Insertion Sort Algorithm
 
