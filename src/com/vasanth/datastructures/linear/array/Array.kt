@@ -1,4 +1,4 @@
-package com.vasanth.datastructures.array
+package com.vasanth.datastructures.linear.array
 
 // Array Data Structure
 

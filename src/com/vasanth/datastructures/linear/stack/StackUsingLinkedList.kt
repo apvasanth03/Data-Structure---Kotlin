@@ -1,4 +1,4 @@
-package com.vasanth.datastructures.stack
+package com.vasanth.datastructures.linear.stack
 
 // Stack Data Structure - Implemented using LinkedList.
 

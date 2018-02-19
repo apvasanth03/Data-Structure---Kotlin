@@ -1,4 +1,4 @@
-package com.vasanth.datastructures.queue
+package com.vasanth.datastructures.linear.queue
 
 // Queue Data Structure - Implemented using Array.
 

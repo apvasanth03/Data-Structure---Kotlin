@@ -1,4 +1,4 @@
-package com.vasanth.datastructures.linkedlist
+package com.vasanth.datastructures.linear.linkedlist
 
 // CircularLinkedList Data Structure
 

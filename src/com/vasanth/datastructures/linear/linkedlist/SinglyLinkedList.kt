@@ -1,22 +1,22 @@
-package com.vasanth.datastructures.linkedlist
+package com.vasanth.datastructures.linear.linkedlist
 
-// DoublyLinkedList Data Structure
+// SinglyLinkedList Data Structure
 
 /**
- * DoublyLinkedList.
+ * SinglyLinkedList.
  */
-class DoublyLinkedList {
+class SinglyLinkedList {
 
     var head: Node? = null
 
-    // DoublyLinkedList Node.
+    // LinkedList Node.
     class Node {
         var data: Int
-        var next: Node? = null
-        var prev: Node? = null
+        var next: Node?
 
         constructor(data: Int) {
             this.data = data
+            next = null
         }
     }
 
@@ -25,20 +25,18 @@ class DoublyLinkedList {
      */
 
     /**
-     * Adding a node at the front of the list.
+     * This function is in LinkedList class. Inserts a new Node at front of the list.
      */
     fun push(newData: Int) {
         val newNode = Node(newData)
 
         newNode.next = head
 
-        head?.prev = newNode
-
         head = newNode
     }
 
     /**
-     * Given a node as prev_node, insert a new node after the given node.
+     * This function is in LinkedList class. Inserts a new node after the given prev_node.
      */
     fun insertAfter(prevNode: Node, newData: Int) {
         val newNode = Node(newData)
@@ -46,14 +44,10 @@ class DoublyLinkedList {
         newNode.next = prevNode.next
 
         prevNode.next = newNode
-
-        newNode.prev = prevNode
-
-        newNode.next?.prev = newNode
     }
 
     /**
-     * Add a node at the end of the list.
+     * Appends a new node at the end.
      */
     fun append(newData: Int) {
         val newNode = Node(newData)
@@ -71,8 +65,6 @@ class DoublyLinkedList {
         }
 
         lastNode?.next = newNode
-
-        newNode.prev = lastNode
     }
 
     /**
@@ -88,29 +80,29 @@ class DoublyLinkedList {
         }
 
         var temp = head
+        var prev: Node? = null
 
         // If head node itself holds the key to be deleted
-        if (temp?.data == key) {
+        if (temp != null && temp.data == key) {
             head = temp.next
-            head?.prev = null
             return
         }
 
-        // Search for the key to be deleted
+        // Search for the key to be deleted, keep track of the
+        // previous node as we need to change temp.next
         while (temp != null && temp.data != key) {
+            prev = temp
             temp = temp.next
         }
 
         if (temp != null) {
-            temp.prev?.next = temp.next
-            temp.next?.prev = temp.prev
+            prev?.next = temp.next
         }
     }
 
     /**
      * Given a reference (pointer to pointer) to the head of a list and a position, deletes the node at the given position.
      */
-
     fun deleteNodeAtGivenPosition(position: Int) {
         if (head == null) {
             return
@@ -121,21 +113,25 @@ class DoublyLinkedList {
         // If head needs to be removed
         if (position == 0) {
             head = temp?.next
-            head?.prev = null
             return
         }
 
-        // Find node to be deleted
+        // Find previous node of the node to be deleted
         var i = 0
-        while (temp != null && i < position) {
+        while (temp != null && i < position - 1) {
             temp = temp.next
             i++
         }
 
-        if (temp != null) {
-            temp.prev?.next = temp.next
-            temp.next?.prev = temp.prev
+        // If position is more than number of nodes
+        if (temp == null || temp.next == null) {
+            return
         }
+
+        // Node temp->next is the node to be deleted
+        // Store pointer to the next of node to be deleted
+        val deleteNode = temp.next
+        temp.next = deleteNode?.next
     }
 
     /**
@@ -175,7 +171,7 @@ class DoublyLinkedList {
  * Main.
  */
 fun main(args: Array<String>) {
-    val linkedList = DoublyLinkedList()
+    val linkedList = SinglyLinkedList()
 
     linkedList.append(6)
 
