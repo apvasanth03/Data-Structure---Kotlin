@@ -4,23 +4,23 @@ import java.util.*
 
 // Binary Tree Data Structure.
 
-/**
- * Class containing left and right child of current node and key value.
- */
-class Node {
-
-    var key: Int
-    var left: Node? = null
-    var right: Node? = null
-
-    constructor(key: Int) {
-        this.key = key
-    }
-}
-
 class BinaryTree {
 
     var root: Node? = null
+
+    /**
+     * Class containing left and right child of current node and key value.
+     */
+    class Node {
+
+        var key: Int
+        var left: Node? = null
+        var right: Node? = null
+
+        constructor(key: Int) {
+            this.key = key
+        }
+    }
 
     /**
      * DEPTH FIRST TRAVERSAL.
@@ -29,55 +29,55 @@ class BinaryTree {
     /**
      * Given a binary tree, print its nodes in preorder.
      */
-    private fun printPreOrder(node: Node?) {
-        if (node == null) {
+    private fun printPreOrder(root: Node?) {
+        if (root == null) {
             return
         }
 
-        // first print data of node
-        print("${node.key} ")
+        // first print data of root
+        print("${root.key} ")
 
         // then recur on left subtree
-        printPreOrder(node.left)
+        printPreOrder(root.left)
 
         // now recur on right subtree
-        printPreOrder(node.right)
+        printPreOrder(root.right)
     }
 
     /**
      * Given a binary tree, print its nodes in inorder.
      */
-    private fun printInOrder(node: Node?) {
-        if (node == null) {
+    private fun printInOrder(root: Node?) {
+        if (root == null) {
             return
         }
 
         // first recur on left child
-        printInOrder(node.left)
+        printInOrder(root.left)
 
-        // then print the data of node
-        print("${node.key} ")
+        // then print the data of root
+        print("${root.key} ")
 
         // now recur on right child
-        printInOrder(node.right)
+        printInOrder(root.right)
     }
 
     /**
      * Given a binary tree, print its nodes according to the "bottom-up" postorder traversal.
      */
-    private fun printPostOrder(node: Node?) {
-        if (node == null) {
+    private fun printPostOrder(root: Node?) {
+        if (root == null) {
             return
         }
 
         // first recur on left subtree
-        printPostOrder(node.left)
+        printPostOrder(root.left)
 
         // then recur on right subtree
-        printPostOrder(node.right)
+        printPostOrder(root.right)
 
-        // now deal with the node
-        print("${node.key} ")
+        // now deal with the root
+        print("${root.key} ")
     }
 
     // Wrappers over above recursive functions
@@ -127,11 +127,11 @@ class BinaryTree {
  */
 fun main(args: Array<String>) {
     val tree = BinaryTree()
-    tree.root = Node(1)
-    tree.root?.left = Node(2)
-    tree.root?.right = Node(3)
-    tree.root?.left?.left = Node(4)
-    tree.root?.left?.right = Node(5)
+    tree.root = BinaryTree.Node(1)
+    tree.root?.left = BinaryTree.Node(2)
+    tree.root?.right = BinaryTree.Node(3)
+    tree.root?.left?.left = BinaryTree.Node(4)
+    tree.root?.left?.right = BinaryTree.Node(5)
 
     println("Preorder traversal of binary tree is ")
     tree.printPreOrder()
